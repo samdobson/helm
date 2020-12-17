@@ -1,6 +1,8 @@
 apiVersion: v2
 name: streamlit
 description: A Helm chart for Kubernetes
+maintainers:
+  - name: Sam Dobson
 
 # A chart can be either an 'application' or a 'library' chart.
 #
