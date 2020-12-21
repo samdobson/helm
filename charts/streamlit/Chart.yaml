@@ -2,5 +2,7 @@ apiVersion: v2
 name: streamlit
 description: A Helm chart for deploying a Streamlit application to Kubernetes
 type: application
+maintainers:
+  - name: Sam Dobson
 version: 0.1.4
 appVersion: 0.72.0
