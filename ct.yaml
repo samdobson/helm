@@ -2,6 +2,5 @@
 remote: origin
 chart-dirs:
   - charts
-chart-repos:
-  - bitnami=https://charts.bitnami.com/bitnami
+validate-maintainers: false
 helm-extra-args: --timeout 600s
