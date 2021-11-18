@@ -37,13 +37,9 @@ spec:
             - name: http
               containerPort: 8501
               protocol: TCP
-              volumeMounts:
-              - name: app-volume
-                mountPath: /usr/src/app
-            volumes:
+          volumeMounts:
             - name: app-volume
-              configMap:
-                name: {{ .Values.image.configMapName }}
+              mountPath: /usr/src/app
           livenessProbe:
             httpGet:
               path: /
@@ -54,6 +50,10 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: app-volume
+          configMap:
+            name: {{ .Values.image.configMapName }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
