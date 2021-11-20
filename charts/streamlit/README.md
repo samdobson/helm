@@ -1,27 +1,23 @@
 # Streamlit Helm Chart
 
-Deploy your Streamlit to Kubernetes in minutes. 
-
-## Prerequisites
-
-* [Helm](https://helm.sh/docs/intro/install/)
+Deploy your Streamlit application to Kubernetes the simple way with Helm.
 
 ## Usage
 
+No need to deal with containers!
+
 `helm repo add samdobson https://samdobson.github.io/helm`
-`helm install my-streamlit-app streamlit --set-file appCode=myapp.py`
+`helm install my-streamlit-app samdobson/streamlit --set-file appCode=myapp.py`
 
 ## Why?
 
-Sometimes you just want a quick route to deploying an existing Streamlit application, without worrying about containerisation.
+Sometimes you just want an easy way of deploying an existing Streamlit application, without messing with Docker and container registries.
 
-This helm chart adds for, with your application code stored as a ConfigMap and mounted as a volume.
+This helm chart deploys a Python 3.10 [Streamlit Docker Image](https://hub.docker.com/repository/docker/samdobson/streamlit), stores your application code as [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/), mounts it as a [volume](https://kubernetes.io/docs/concepts/storage/volumes/) and executes it.
 
-This deployment uses an unofficial Python 3.10 [Streamlit Docker Image](https://hub.docker.com/repository/docker/samdobson/streamlit).
+### Limitations
 
-# Limitations
-
-This approach will only work for you if your Streamlit app:
+This quick and dirty approach will only work if your Streamlit app:
 
 * Has a single file only.
 * Requires no additional libraries (you will need to build your own image, if this is the case).
