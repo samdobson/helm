@@ -29,6 +29,9 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
+          volumeMounts:
+            - mountPath: "/usr/src/app"
+              name: app-code
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -37,9 +40,6 @@ spec:
             - name: http
               containerPort: 8501
               protocol: TCP
-          volumeMounts:
-            - name: app-volume
-              mountPath: /usr/src/app
           livenessProbe:
             httpGet:
               path: /
@@ -50,14 +50,14 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      volumes:
-        - name: app-volume
-          configMap:
-            name: {{ .Values.image.configMapName }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: app-code
+          configMap:
+            name: {{ .Values.configMapName }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
