@@ -3,6 +3,16 @@ entries:
   streamlit:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-11-21T21:17:59.803502626Z"
+    description: A Helm chart for deploying a Streamlit app to Kubernetes
+    digest: 24081b2be778606456fe682fcc3151e81292282f6cdef32e526747aa62adcb61
+    name: streamlit
+    type: application
+    urls:
+    - https://github.com/samdobson/helm/releases/download/streamlit-0.3.0/streamlit-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-11-21T21:06:46.563310334Z"
     description: A Helm chart for deploying a Streamlit app to Kubernetes
     digest: 7e212b1d18036dd5cc6e7cb4619cab4727c0ad8b317e6ba4ddede608f70cd533
