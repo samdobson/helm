@@ -14,11 +14,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-# Do not set this value here. See README.md for usage.
-appCode: ""
-# Override configmap name (optional).
-configMapName: "streamlit-app"
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

@@ -2,6 +2,8 @@
 
 Deploy your Streamlit application to Kubernetes the simple way with Helm.
 
+This is clearly very hacky, and not in any way suitable for a production deployment.
+
 ## Usage
 
 No need to deal with containers!
@@ -10,11 +12,17 @@ No need to deal with containers!
 
 `helm repo add samdobson https://samdobson.github.io/helm`
 
-### 2. Install the chart.
+### 2. Load your application code to a configmap.
 
-`helm install my-streamlit-app samdobson/streamlit --set-file appCode=myapp.py`
+Save your app code as `streamlit_app.py`, then create a configmap, with:
 
-... where `my-streamlit-app` is your release name, and `myapp.py` is the path to your application.
+`kubectl create configmap streamlit-appcode --from-file=streamlit_app.py`
+
+(to understand why this is managed outside of the chart, see [Issue #2](https://github.com/samdobson/helm/issues/2).
+
+### 3. Install the chart.
+
+`helm install my-streamlit-app samdobson/streamlit`
 
 ## Why?
 

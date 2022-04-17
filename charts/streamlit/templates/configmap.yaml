@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Values.configMapName }}
-data:
-  streamlit_app.py:
-    {{ .Values.appCode | indent 4 }}

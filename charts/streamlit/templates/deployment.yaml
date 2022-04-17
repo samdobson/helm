@@ -57,7 +57,7 @@ spec:
       volumes:
         - name: app-code
           configMap:
-            name: {{ .Values.configMapName }}
+            name: streamlit-appcode
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
